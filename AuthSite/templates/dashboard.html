@@ -1,0 +1,11 @@
+<html>
+    <body>
+        <h1>DashBoard</h1>
+        <hr>
+        <h1>Hello {{ user.username }} </h1>
+        <hr>
+        <img src="{{ user.user_profile.pfp.url }}" alt="Profile Picture", width="200", height="200">
+
+        <p>Wanna go back to the Home page ? (LogOut): <a href="/authsite/home/">LogOut</a></p>
+    </body>
+</html>

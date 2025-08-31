@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Signup</title>
+    </head>
+    <body>
+            {% if error %}
+            <h3> {{ error }}</h3>
+            <p><a href="/authsite/signup/">Go Back</a></p>
+            {% else %}
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h1>SignUp</h1>
+                    <hr>
+                    <label>Email:</label>
+                    <input type="email" name="email" placeholder="Enter Email" autocomplete="new-password" >
+                    <hr>
+                    <label>First Name:</label>
+                    <input type="text" name="first_name" placeholder="Enter First Name" autocomplete="new-password">
+                    <hr>
+                    <label>Last Name:</label>
+                    <input type="text" name="last_name" placeholder="Enter Last Name" autocomplete="new-password">
+                    <hr>
+                    <label>Username:</label>
+                    <input type="text" name="username" placeholder="Enter Username" autocomplete="new-password">
+                    <hr>
+                    <label>Password:</label>
+                    <input type="password" name="password" placeholder="Enter Password" autocomplete="new-password" >
+                    <hr>
+                    <label>Confirm Password:</label>
+                    <input type="password" name="confirm_password" placeholder="Enter Password" autocomplete="new-password" >
+                    <hr>
+                    <label>Upload Picture:</label>
+                    <input type="file" name="pfp" accept="image/*">
+                    <hr>
+                    <button type="submit">Signup</button>
+
+                    <p>Already have an account ? <a href="/authsite/login/">Login</a> </p>
+                </form>
+            {% endif %}
+    </body>
+</html>
