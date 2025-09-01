@@ -18,10 +18,10 @@ def login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        if not User_Profile.objects.filter(Q(user__username=username) | Q(user__email=username)).exists():
+        if not User_Profile.objects.filter(Q(user__username=username) | Q(user__email=username.lower())).exists():
             return render(request, 'login.html', {'error': "User does not exist"})
         
-        if User_Profile.objects.filter(user__email=username).exists():
+        if User_Profile.objects.filter(user__email=username.lower()).exists():
             temp_user = User_Profile.objects.get(user__email=username)
             username = temp_user.user.username
 
@@ -43,7 +43,9 @@ def signup(request):
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
         pfp = request.FILES.get('pfp')
-        print(type(pfp))
+
+        email = email.lower()
+
         if password != confirm_password:
             return render(request, 'signup.html', {'error': "Passwords do not match"})
 
