@@ -22,7 +22,7 @@ def login(request):
             return render(request, 'login.html', {'error': "User does not exist"})
         
         if User_Profile.objects.filter(user__email=username.lower()).exists():
-            temp_user = User_Profile.objects.get(user__email=username)
+            temp_user = User_Profile.objects.get(user__email=username.lower())
             username = temp_user.user.username
 
         user = authenticate(username=username, password=password)
